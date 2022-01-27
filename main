@@ -1,0 +1,67 @@
+lc,clear;
+
+%------------------------------------------------------------
+%EJEMPLO N°1
+%------------------------------------------------------------
+
+f=@(t,x,y) 0.2*x; 
+g=@(t,x,y) x-2.3*y;
+
+t0=0; 
+x0=2;
+y0=2;
+tf=1;
+n=8;
+
+[t,x,y]=sis_euler(f,g,t0,tf,x0,y0,n);
+
+fprintf("\n");
+display("METODO DE HEUN");
+fprintf("\n\ni\tx\t\ty1\t\ty2\n");
+for i=1:(length(x)) 
+  fprintf("%i\t%f\t%f\t%f\n",i,t(i),x(i),y(i));
+end
+fprintf("\n");
+
+figure(1);
+plot(t,x)
+hold on
+plot(t,y)
+hold off
+xlabel('t')
+ylabel('x,y')
+legend('x(t)','y(t)')
+title('Sistemas de Ecuaciones Diferenciales')
+
+%----------------------------------------------------------------
+%EJEMPLO N°2
+%----------------------------------------------------------------
+
+f=@(t,x,y) -1.06*x; 
+g=@(t,x,y) -x+9*y;
+
+t0=0; 
+x0=6;
+y0=6;
+tf=3;
+n=3;
+
+[t,x,y]=sis_euler(f,g,t0,tf,x0,y0,n);
+
+fprintf("\n");
+display("METODO DE HEYN");
+fprintf("\n\ni\tx\t\ty1\t\ty2\n");
+for i=1:(length(x)) 
+  fprintf("%i\t%f\t%f\t%f\n",i,t(i),x(i),y(i));
+end
+fprintf("\n");
+
+figure(2);
+plot(t,x)
+hold on
+plot(t,y)
+hold off
+xlabel('t')
+ylabel('x,y')
+legend('x(t)','y(t)')
+title('Sistemas de Ecuaciones Diferenciales')
